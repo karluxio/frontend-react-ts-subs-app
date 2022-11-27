@@ -1,15 +1,13 @@
-{
-  "subs": [
-    {
-      "nick": "karlux",
-      "subMonths": 2,
-      "avatar": "https: //i.pravatar.cc/150?u=karlux",
-      "description": "eventually admin"
-    },
-    {
-      "nick": "fedan",
-      "subMonths": 1,
-      "avatar": "https: //i.pravatar.cc/150?u=fedan"
-    }
-  ]
-}
+[
+  {
+    "nick": "karlux",
+    "months": 2,
+    "profileUrl": "https: //i.pravatar.cc/150?u=karlux",
+    "description": "eventually admin"
+  },
+  {
+    "nick": "fedan",
+    "months": 1,
+    "profileUrl": "https: //i.pravatar.cc/150?u=fedan"
+  }
+]
