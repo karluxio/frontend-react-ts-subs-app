@@ -14,6 +14,7 @@ pnpm dev
 ## git branches
 
 - **main**: simple state management
+- **simple-state-management**: state management with useState
 - **reducer**: state management with reducer
 - **fetching**: fetching data and mapping with typescript (1)
 
