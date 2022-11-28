@@ -1,21 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Form, List } from './components';
-import { Sub } from './types';
-
-const INITIAL_STATE: Array<Sub> = [
-  {
-    nick: 'karlux',
-    subMonths: 2,
-    avatar: 'https://i.pravatar.cc/150?u=karlux',
-    description: 'eventually admin'
-  },
-  {
-    nick: "fedan",
-    subMonths: 1,
-    avatar: 'https://i.pravatar.cc/150?u=fedan',
-  }
-]
-
+import { ResponseSubsFromApi, Sub } from './types';
 interface AppState {
   subs: Array<Sub>,
   newSubsNumber: number
@@ -29,7 +14,31 @@ export const App = () => {
   const divRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setSubs(INITIAL_STATE)
+    const fetchSubs = (): Promise<ResponseSubsFromApi> => {
+      return fetch("http://localhost:3000/subs").then(resp => resp.json())
+    }
+
+    const mapFromApiToSubs = (apiResponse: ResponseSubsFromApi): Array<Sub> => {
+      return apiResponse.map(subsFromApi => {
+        const {
+          nick,
+          months: subMonths,
+          profileUrl: avatar,
+          description
+        } = subsFromApi
+
+        return {
+          nick,
+          subMonths,
+          avatar,
+          description
+        }
+      })
+    }
+
+    fetchSubs()
+      .then(mapFromApiToSubs)
+      .then(setSubs)
   }, [])
 
   useEffect(() => {
@@ -38,7 +47,7 @@ export const App = () => {
 
   const handleNewSub = (newSub: Sub): void => {
     setSubs(subs => [newSub, ...subs])
-    setNewSubsNumber(subs.length)
+    setNewSubsNumber(n => n + 1)
   }
 
   return (
