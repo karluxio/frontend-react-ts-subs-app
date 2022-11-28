@@ -1,6 +1,6 @@
 # React App with Typescript
 
-This es a simple project to manage hardcoded using React + Typescript subscriptions
+This is a simple project to manage hardcoded subscriptions using React + Typescript
 
 ---
 
